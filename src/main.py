@@ -2,12 +2,7 @@ from manim import *
 from manim_slides import Slide
 
 class MarkovChainPresentation(Slide):
-    def construct(self):
-        # Configuration du logo
-        # logo = ImageMobject("image.png").scale(0.15).to_corner(UR)
-        # self.add(logo)
-        
-        # === SLIDE 1 ===
+    def slide_intro(self):
         title1 = Text("Markov Chains", font_size=48, color=WHITE)
         subtitle1 = Text("A brief introduction", font_size=32, color=BLUE)
         subtitle1.next_to(title1, DOWN, buff=0.5)
@@ -19,10 +14,9 @@ class MarkovChainPresentation(Slide):
         self.play(Write(subtitle1))
         self.play(Write(subtitle2))
         self.next_slide()
-        
-        # === SLIDE 2 - Table des matières ===
         self.play(FadeOut(title1), FadeOut(subtitle1), FadeOut(subtitle2))
-        
+
+    def slide_content(self):
         title2 = Text("Content", font_size=48, color=WHITE)
         title2.to_edge(UP)
         
@@ -42,8 +36,9 @@ class MarkovChainPresentation(Slide):
         self.play(Write(bullet_points))
         self.next_slide()
         
-        # === SLIDE 3 - Introduction ===
         self.play(FadeOut(title2), FadeOut(bullet_points))
+
+    def slide_intro_markov(self):
         
         title3 = Text("Introduction to Markov Chains", font_size=42, color=WHITE)
         title3.to_edge(UP)
@@ -80,9 +75,9 @@ class MarkovChainPresentation(Slide):
         self.next_slide()
         self.play(Write(advantage_text))
         self.next_slide()
-        
-        # === SLIDE 4 - Définition Mathématique ===
         self.play(FadeOut(title3), FadeOut(intro_text), FadeOut(markov_property), FadeOut(advantage_text))
+
+    def markov_theorie(self): 
         
         title4 = Text("Mathematical Definition", font_size=42, color=WHITE)
         title4.to_edge(UP)
@@ -115,9 +110,30 @@ class MarkovChainPresentation(Slide):
         self.next_slide()
         self.play(Write(condition2))
         self.next_slide()
+        self.play(FadeOut(title4), FadeOut(process_def), FadeOut(condition1), FadeOut(condition2))
+        
+
+    def construct(self):
+        # Configuration du logo
+        # logo = ImageMobject("image.png").scale(0.15).to_corner(UR)
+        # self.add(logo)
+        
+        # === SLIDE 1 ===
+        self.slide_intro()
+
+        
+        
+        # === SLIDE 2 - Table des matières ===
+        
+        self.slide_content()
+
+        # === SLIDE 3 - Introduction ===
+        self.slide_intro_markov()
+        
+        # === SLIDE 4 - Définition Mathématique ===
+        self.markov_theorie()
         
         # === SLIDE 5 - Exemple Météo ===
-        self.play(FadeOut(title4), FadeOut(process_def), FadeOut(condition1), FadeOut(condition2))
         
         title5 = Text("Weather Example", font_size=42, color=WHITE)
         title5.to_edge(UP)
