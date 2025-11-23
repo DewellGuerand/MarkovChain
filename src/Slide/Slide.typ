@@ -1,4 +1,6 @@
-#import "src/lib.typ": *
+#import "lib.typ": *
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+#import "@preview/showybox:2.0.4": *
 
 
 
@@ -14,13 +16,176 @@
   toc: true,
   count: none,
   footer: true,
-  logo : "image.png",
+  logo : "pictures/image.png",
   title-color: navy
 )
 = Introduction 
-= Context 
+= Context
+
+== Context
+
+  - Guerre civile 
+  #columns(2)[
+    Pavel Nekrasov 
+
+    Independance $<=>$ Loi des grands nombres
+    #image("pictures/téléchargement.jpg", width: 60%)
+
+
+    #colbreak()
+    Andrei Markov
+
+
+
+    Independance $=>$ Loi des grands nombres 
+    #image("pictures/téléchargement (1).jpg", width: 60%)
+
+  ]
+  
+== Small exemple $(1)$
+
+Imaginons que nous voulions estimer la probabilitée qu'ils pleuvent ou qu'il y ait grand soleil. 
+On peut créer le graphe suivant :
+
+#align(center ,diagram(
+	node-stroke: .1em,
+	node-fill: blue,
+	spacing: 4em,
+	node((0,0), `Sunny day`, radius: 3em , ),
+	edge($20%$, "<|-" , bend: 20deg),
+
+	node((2,0), `Rainy day`, radius: 3em),
+edge((0,0),(2,0),$30%$, "-|>" , bend: -20deg),
+
+	edge((0,0), (0,0), $70%$, "<|-", bend: 130deg),
+ edge((2,0), (2,0), $80%$, "-|>", bend: 130deg),
+ 
+))
+Ici nous avons deux états : Sunny et Rainy
+
+== Small exemple $(2)$
+
+On peut en fait représenter ce graphe de la manière suivante en terme de probabilitée : 
+#figure(
+  table(
+    columns: 3,
+    stroke: none,
+
+    table.header[][S][R],
+    [S], [$70%$], [$30%$], 
+    
+    [R], [$20%$], [$80%$], 
+    
+  ),
+) <probe-a>
+
+#showybox(
+  frame: (
+    border-color: luma(0).darken(50%),
+    title-color: luma(170).lighten(60%),
+    body-color: luma(170).lighten(80%)
+  ),
+  title-style: (
+    color: black,
+    weight: "regular",
+   
+  ),
+  shadow: (
+    offset: 3pt,
+  ),
+  title: "Definition",
+  [ 
+    Un état $S_i$ est une situation possible du système à un instant donné, choisie dans un ensemble fini ou dénombrable.
+
+    Ici dans notre exmple nous avons $S = mat(S ,R)$
+
+    Avec $S$ = Sunny et $R$ = Rainy
+  ],
+)
+
+
+
+
 = Theory 
-= Application 
+= Credit risk Measurement
+== 
+#showybox(
+  frame: (
+    border-color: luma(0).darken(50%),
+    title-color: luma(170).lighten(60%),
+    body-color: luma(170).lighten(80%)
+  ),
+  title-style: (
+    color: black,
+    weight: "regular",
+   
+  ),
+  shadow: (
+    offset: 3pt,
+  ),
+  title: "Definition : Note de crédit",
+  [ 
+    Note attribué a une entreprise pour déterminer la fiabilitée de remboursement des dettes de l'entreprise.
+  ],
+
+)
+But : Déterminer la probabilitée qu'une entreprise change de note d'une année à l'autre.
+
+On veut alors créer la matrice de transition mais comment ? 
+
+Deux possibilitées : 
+- Note basée sur l'historique des données
+- Note basée sur des experts 
+
+Possibilitées de combiner les deux : 
+$ P_("total") = alpha P_("agency") + (1 - alpha) P_("expert") $
+== Exemple 
+
+
+#figure(
+  table(
+    columns: 9,
+    stroke: none,
+
+    table.header[][AAA][AA][A][BBB][BB][B][CCC][D],
+
+    [AAA], [$0.88$], [$0.08$], [$0.02$], [$0.01$], [$0.005$], [$0.003$], [$0.001$], [$0.001$],
+[AA],  [$0.04$], [$0.85$], [$0.06$], [$0.03$], [$0.01$],  [$0.005$], [$0.003$], [$0.002$],
+[A],   [$0.01$], [$0.06$], [$0.80$], [$0.08$], [$0.03$],  [$0.01$],  [$0.008$], [$0.002$],
+[BBB], [$0.005$],[$0.02$], [$0.07$], [$0.75$], [$0.10$],  [$0.03$],  [$0.02$],  [$0.005$],
+[BB],  [$0.002$],[$0.01$], [$0.03$], [$0.10$], [$0.70$],  [$0.10$],  [$0.05$],  [$0.008$],
+[B],   [$0.001$],[$0.005$],[$0.015$],[$0.04$], [$0.15$],  [$0.60$],  [$0.15$],  [$0.039$],
+[CCC], [$0$],   [$0.002$],[$0.008$],[$0.03$], [$0.10$],  [$0.16$],  [$0.50$],  [$0.20$],
+[D],   [$0$],   [$0$],    [$0$],    [$0$],    [$0$],     [$0$],     [$0$],     [$1$],
+
+  ),
+  caption: [Complete credit rating transition matrix (AAA to D)],
+)
+
+Si l'ont veut estimer la probabilitée d'être que l'entreprise ait un autre rating en se basant sur notre état actuel : $S_n = S_0 P_n$. On peut également déterminer la probabilitée à long terme d'être dans chaque état. 
+
+== Exemple
+
+For instance if we want to predict for different value of $n$ : 
+#table(
+    columns: 9,
+
+[*n*],  [*AAA*],  [*AA*],  [*A*],   [*BBB*], [*BB*],  [*B*],   [*CCC*], [*D*],
+
+[5],    [$0.552$], [$0.238$], [$0.088$], [$0.054$], [$0.031$], [$0.016$], [$0.009$], [$0.011$],
+
+[10],   [$0.339$], [$0.270$], [$0.136$], [$0.098$], [$0.065$], [$0.033$], [$0.021$], [$0.039$],
+
+[100],  [$0.023$], [$0.042$], [$0.040$], [$0.040$], [$0.035$], [$0.019$], [$0.012$], [$0.790$],
+
+[1000], [$0.000$], [$0.000$], [$0.000$], [$0.000$], [$0.000$], [$0.000$], [$0.000$], [$1.000$],
+
+
+
+  )
+= Hidden markov model 
+
+
 = Further reading
 = About _diatypst_
 

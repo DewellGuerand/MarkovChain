@@ -2,6 +2,45 @@ from manim import *
 from manim_slides import Slide
 
 class MarkovChainPresentation(Slide):
+    def construct(self):
+        print("Construct started")
+
+        # Configuration du logo
+        # logo = ImageMobject("image.png").scale(0.15).to_corner(UR)
+        # self.add(logo)
+        
+        # === SLIDE 1 ===
+        # self.slide_intro()
+
+        
+        
+        # === SLIDE 2 - Table des matières ===
+        
+        # self.slide_content()
+
+        # === SLIDE 3 - Introduction ===
+        # self.slide_intro_markov()
+        
+        # === SLIDE 4 - Définition Mathématique ===
+        # self.markov_theorie()
+        
+        # === SLIDE 5 - Exemple Météo ===
+        self.slide_meteo()
+        # === SLIDE 7 - Matrice de Transition ===
+        # self.matrix_transition()
+        
+        # === SLIDE 8 - Applications ===
+        # self.applications()
+
+        # === SLIDE FINALE ===
+        
+        final_title = Text("Thank you for your attention!", font_size=42, color=WHITE)
+        questions = Text("Questions?", font_size=36, color=YELLOW)
+        questions.next_to(final_title, DOWN, buff=0.8)
+        
+        self.play(Write(final_title))
+        self.play(Write(questions))
+        self.next_slide()
     def slide_intro(self):
         title1 = Text("Markov Chains", font_size=48, color=WHITE)
         subtitle1 = Text("A brief introduction", font_size=32, color=BLUE)
@@ -112,35 +151,13 @@ class MarkovChainPresentation(Slide):
         self.next_slide()
         self.play(FadeOut(title4), FadeOut(process_def), FadeOut(condition1), FadeOut(condition2))
         
-
-    def construct(self):
-        # Configuration du logo
-        # logo = ImageMobject("image.png").scale(0.15).to_corner(UR)
-        # self.add(logo)
-        
-        # === SLIDE 1 ===
-        self.slide_intro()
-
-        
-        
-        # === SLIDE 2 - Table des matières ===
-        
-        self.slide_content()
-
-        # === SLIDE 3 - Introduction ===
-        self.slide_intro_markov()
-        
-        # === SLIDE 4 - Définition Mathématique ===
-        self.markov_theorie()
-        
-        # === SLIDE 5 - Exemple Météo ===
+    def slide_meteo(self):
         
         title5 = Text("Weather Example", font_size=42, color=WHITE)
         title5.to_edge(UP)
         
         # Description de l'exemple
-        example_text = Text(
-            "Weather prediction using Markov chains:",
+        example_text = Text("Weather prediction using Markov chains:",
             font_size=24,
             color=WHITE
         )
@@ -193,51 +210,56 @@ class MarkovChainPresentation(Slide):
 
 
         # --- Boucles ---
+                
         sunny_loop = Arc(
-            radius=1.1, 
-            angle=TAU * 0.7, 
-            start_angle=PI / 2,
-            color=BLUE,
-            stroke_width=8
-        ).move_arc_center_to(sunny_state.get_center())
+                radius=1.45,
+                start_angle=PI * 0.15,
+                angle=PI * 1.7,
+                color=BLUE,
+                stroke_width=8,
+                arc_center=sunny_state.get_center() + LEFT * 2.2 
+            )
+        
+        
 
-        sunny_loop_label = boxed_label("70%").next_to(sunny_loop, LEFT, buff=0.2)
+        sunny_loop_label = boxed_label("70%").next_to(sunny_loop, UP, buff=0.15)
+
 
         rainy_loop = Arc(
-            radius=1.1,
-            angle=TAU * 0.7,
-            start_angle=-PI / 2,
+            radius=1.45,
+            start_angle=-PI * 0.15,
+            angle=-PI * 1.7,
             color=BLUE,
-            stroke_width=8
-        ).move_arc_center_to(rainy_state.get_center())
+            stroke_width=8,
+            arc_center=rainy_state.get_center()
+        )
 
-        rainy_loop_label = boxed_label("80%").next_to(rainy_loop, RIGHT, buff=0.2)
-
+        rainy_loop_label = boxed_label("80%").next_to(rainy_loop, UP, buff=0.15)
 
         # --- Transitions Sunny → Rainy ---
         sunny_to_rainy = CurvedArrow(
-            sunny_state.get_right() + UP * 0.2,
-            rainy_state.get_left() + UP * 0.2,
+            sunny_state.get_right() + DOWN * 0.5,
+            rainy_state.get_left() + DOWN * 0.5,
             color=BLUE,
             stroke_width=10,
             tip_length=0.25,
             radius=3.5
         )
 
-        sunny_to_rainy_label = boxed_label("20%").next_to(sunny_to_rainy, UP, buff=0.15)
+        sunny_to_rainy_label = boxed_label("20%").next_to(sunny_to_rainy, DOWN, buff=0.15)
 
 
         # --- Transitions Rainy → Sunny ---
         rainy_to_sunny = CurvedArrow(
-            rainy_state.get_left() + DOWN * 0.2,
-            sunny_state.get_right() + DOWN * 0.2,
+            rainy_state.get_left() + UP * 0.5,
+            sunny_state.get_right() + UP * 0.5,
             color=BLUE,
             stroke_width=10,
             tip_length=0.25,
             radius=3.5
         )
 
-        rainy_to_sunny_label = boxed_label("30%").next_to(rainy_to_sunny, DOWN, buff=0.15)
+        rainy_to_sunny_label = boxed_label("30%").next_to(rainy_to_sunny, UP, buff=0.15)
 
 
         # --- Animation ---
@@ -258,13 +280,14 @@ class MarkovChainPresentation(Slide):
         self.play(Create(sunny_to_rainy), FadeIn(sunny_to_rainy_label))
         self.play(Create(rainy_to_sunny), FadeIn(rainy_to_sunny_label))
         self.next_slide()
-        # === SLIDE 7 - Matrice de Transition ===
         self.play(FadeOut(title6), FadeOut(sunny_state), FadeOut(rainy_state), 
                   FadeOut(sunny_label), FadeOut(rainy_label),
                   FadeOut(sunny_loop), FadeOut(rainy_loop),
                   FadeOut(sunny_loop_label), FadeOut(rainy_loop_label),
                   FadeOut(sunny_to_rainy), FadeOut(rainy_to_sunny),
                   FadeOut(sunny_to_rainy_label), FadeOut(rainy_to_sunny_label))
+        
+    def matrix_transition(self):
         
         title7 = Text("Transition Matrix", font_size=42, color=WHITE)
         title7.to_edge(UP)
@@ -295,9 +318,8 @@ class MarkovChainPresentation(Slide):
         self.next_slide()
         self.play(Write(explanation))
         self.next_slide()
-        
-        # === SLIDE 8 - Applications ===
         self.play(FadeOut(title7), FadeOut(matrix_title), FadeOut(transition_matrix), FadeOut(explanation))
+    def applications(self):
         
         title8 = Text("Applications", font_size=42, color=WHITE)
         title8.to_edge(UP)
@@ -318,14 +340,6 @@ class MarkovChainPresentation(Slide):
         self.play(Write(title8))
         self.play(Write(applications))
         self.next_slide()
-        
-        # === SLIDE FINALE ===
         self.play(FadeOut(title8), FadeOut(applications))
-        
-        final_title = Text("Thank you for your attention!", font_size=42, color=WHITE)
-        questions = Text("Questions?", font_size=36, color=YELLOW)
-        questions.next_to(final_title, DOWN, buff=0.8)
-        
-        self.play(Write(final_title))
-        self.play(Write(questions))
-        self.next_slide()
+
+    

@@ -1,0 +1,105 @@
+{
+  "slides": [
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\MarkovChainPresentation\\562db003734960bc8da6b5ea65f798edd643c09231e98e109c764d34e8e2ddae.mp4",
+      "rev_file": "slides\\files\\MarkovChainPresentation\\562db003734960bc8da6b5ea65f798edd643c09231e98e109c764d34e8e2ddae_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\MarkovChainPresentation\\d9695be7a9d442012fdb410d787ea430eebfbbbef227bd2d51280e406b89e6ae.mp4",
+      "rev_file": "slides\\files\\MarkovChainPresentation\\d9695be7a9d442012fdb410d787ea430eebfbbbef227bd2d51280e406b89e6ae_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\MarkovChainPresentation\\fab9872c1cfb9342d1ec3f2e4dbd5ce685d429991e5a975c61c1d8049cf58129.mp4",
+      "rev_file": "slides\\files\\MarkovChainPresentation\\fab9872c1cfb9342d1ec3f2e4dbd5ce685d429991e5a975c61c1d8049cf58129_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\MarkovChainPresentation\\5170f35c091763d1b586b144c2615c45199ff36bcb42068c1a20a4244d5e079a.mp4",
+      "rev_file": "slides\\files\\MarkovChainPresentation\\5170f35c091763d1b586b144c2615c45199ff36bcb42068c1a20a4244d5e079a_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\MarkovChainPresentation\\4a0581fd0cd09eb87389ba458a30b5d156267d9703347416980f652dc06c089a.mp4",
+      "rev_file": "slides\\files\\MarkovChainPresentation\\4a0581fd0cd09eb87389ba458a30b5d156267d9703347416980f652dc06c089a_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\MarkovChainPresentation\\ad973b33e60dd175389be6f8005f1b961c0d5c284d1beb48db7c2a4261941b52.mp4",
+      "rev_file": "slides\\files\\MarkovChainPresentation\\ad973b33e60dd175389be6f8005f1b961c0d5c284d1beb48db7c2a4261941b52_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\MarkovChainPresentation\\fb794479a6ac69b90ba7a72663f5ef004e9df2cc322015582ed0bbf6cfcce058.mp4",
+      "rev_file": "slides\\files\\MarkovChainPresentation\\fb794479a6ac69b90ba7a72663f5ef004e9df2cc322015582ed0bbf6cfcce058_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\MarkovChainPresentation\\f201b1e6876ed074911100ab08c2b090b68006343632abc8748435ff255b336e.mp4",
+      "rev_file": "slides\\files\\MarkovChainPresentation\\f201b1e6876ed074911100ab08c2b090b68006343632abc8748435ff255b336e_reversed.mp4"
+    }
+  ],
+  "resolution": [
+    1920,
+    1080
+  ],
+  "background_color": "black"
+}
